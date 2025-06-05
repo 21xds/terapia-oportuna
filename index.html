@@ -2,252 +2,184 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Terapia Oportuna</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0; padding: 0;
-      background-color: #f7f9fc;
-      color: #333;
+      background: #f9f9f9;
     }
     header {
-      background-color: #0275d8;
+      background-color: #007B8A;
       color: white;
-      padding: 20px;
+      padding: 1em 0;
       text-align: center;
     }
     nav {
-      background-color: #014a8e;
       display: flex;
       justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
+      gap: 1em;
+      background-color: #005F6B;
+      padding: 0.5em;
     }
-    nav button {
-      background: none;
-      border: none;
+    nav a {
       color: white;
-      padding: 15px 20px;
+      text-decoration: none;
+      font-weight: bold;
       cursor: pointer;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-    }
-    nav button:hover,
-    nav button.active {
-      background-color: #0256d3;
-    }
-    main {
-      max-width: 900px;
-      margin: 25px auto 40px;
-      background-color: white;
-      padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.1);
     }
     section {
+      padding: 2em;
       display: none;
     }
     section.active {
       display: block;
     }
-    h1, h2 {
-      color: #0275d8;
-      margin-top: 0;
-    }
-    /* Imagen portada */
-    #inicio img {
-      width: 100%;
-      max-height: 400px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-top: 15px;
-    }
-    /* Galería (Servicios) */
-    .gallery {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
     .gallery img {
-      width: 30%;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
-      cursor: pointer;
-    }
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-    /* Testimonios */
-    .testimonial {
-      background-color: #e3f2fd;
-      border-left: 5px solid #0275d8;
-      padding: 15px 20px;
-      margin: 15px 0;
-      border-radius: 4px;
-      font-style: italic;
-    }
-    .testimonial strong {
-      font-style: normal;
-      color: #014a8e;
-    }
-    /* Contacto */
-    form {
-      max-width: 500px;
-      margin: auto;
-    }
-    form label {
-      display: block;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-    form input, form textarea {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      border-radius: 5px;
+      max-width: 300px;
+      margin: 1em;
+      border-radius: 10px;
+    }
+    .testimonio {
+      background: #e0f7fa;
+      padding: 1em;
+      border-radius: 10px;
+      margin-bottom: 1em;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+      background: #fff;
+      padding: 1em;
+      border-radius: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      margin-bottom: 1em;
+      padding: 0.5em;
       border: 1px solid #ccc;
-      font-size: 1rem;
-      resize: vertical;
+      border-radius: 5px;
     }
-    form button {
-      margin-top: 20px;
-      background-color: #0275d8;
-      border: none;
-      padding: 12px 20px;
+    button {
+      background: #007B8A;
       color: white;
-      font-size: 1rem;
-      border-radius: 6px;
+      padding: 0.7em;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    form button:hover {
-      background-color: #0256d3;
-    }
-    @media(max-width: 600px) {
-      .gallery img {
-        width: 48%;
-      }
-      nav {
-        gap: 8px;
-      }
-      nav button {
-        padding: 12px 10px;
-        font-size: 0.9rem;
-      }
     }
     footer {
-      text-align: center;
-      padding: 15px;
-      background-color: #0275d8;
+      background: #003F4C;
       color: white;
-      font-size: 0.9rem;
-      margin-top: 40px;
+      text-align: center;
+      padding: 1em;
+      margin-top: 2em;
+    }
+    /* Botón de WhatsApp */
+    .whatsapp {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+    .whatsapp img {
+      width: 60px;
+      height: 60px;
     }
   </style>
 </head>
 <body>
-<header>
-  <h1>Terapia Oportuna</h1>
-</header>
 
-<nav>
-  <button class="active" data-target="inicio">Inicio</button>
-  <button data-target="sobre-nosotros">Sobre Nosotros</button>
-  <button data-target="servicios">Servicios</button>
-  <button data-target="testimonios">Testimonios</button>
-  <button data-target="contacto">Contacto</button>
-</nav>
+  <header>
+    <h1>Terapia Oportuna</h1>
+  </header>
 
-<main>
+  <nav>
+    <a onclick="mostrar('inicio')">Inicio</a>
+    <a onclick="mostrar('sobre')">Sobre Nosotros</a>
+    <a onclick="mostrar('servicios')">Servicios</a>
+    <a onclick="mostrar('galeria')">Galería</a>
+    <a onclick="mostrar('testimonios')">Testimonios</a>
+    <a onclick="mostrar('contacto')">Contacto</a>
+  </nav>
+
   <section id="inicio" class="active">
-    <h2>Bienvenido a Terapia Oportuna</h2>
-    <p>Ofrecemos servicios profesionales de rehabilitación física para mejorar tu salud y calidad de vida.</p>
-    <img src="./terapia1.jpg" alt="Portada Terapia Oportuna" />
+    <img src="terapia1.jpg" alt="Terapia Oportuna Portada" style="width:100%; border-radius: 10px;">
+    <h2>Bienvenidos a Terapia Oportuna</h2>
+    <p>Somos una clínica especializada en terapia física y rehabilitación comprometida con tu bienestar.</p>
   </section>
 
-  <section id="sobre-nosotros">
+  <section id="sobre">
     <h2>Sobre Nosotros</h2>
-    <p>
-      En Terapia Oportuna contamos con un equipo profesional dedicado a brindar atención personalizada y oportuna en terapia física y rehabilitación.
-      Nuestro compromiso es ayudarte a recuperar tu movilidad y bienestar con tratamientos efectivos y calidez humana.
-    </p>
+    <p>Con años de experiencia en rehabilitación física, ofrecemos atención profesional, ética y oportuna.</p>
   </section>
 
   <section id="servicios">
     <h2>Servicios</h2>
-    <p>Ofrecemos una variedad de terapias adaptadas a tus necesidades:</p>
     <ul>
-      <li>Terapia física general para recuperación y prevención.</li>
-      <li>Rehabilitación especializada para lesiones complejas.</li>
-      <li>Terapia en entornos escolares para niños y adolescentes.</li>
-      <li>Planes personalizados de tratamiento.</li>
+      <li>Terapia física postoperatoria – $400</li>
+      <li>Rehabilitación neurológica – $450</li>
+      <li>Atención a adultos mayores – $350</li>
+      <li>Terapia en domicilio – $500</li>
     </ul>
-    <h3>Catálogo de Terapias</h3>
-    <div class="gallery">
-      <img src="./terapia2.jpg" alt="Terapia 2" />
-      <img src="./terapia3.jpg" alt="Terapia 3" />
-      <img src="./terapia4.jpg" alt="Terapia 4" />
-    </div>
+  </section>
+
+  <section id="galeria" class="gallery">
+    <h2>Galería</h2>
+    <img src="terapia2.jpg" alt="Rehabilitación 1" />
+    <img src="terapia3.jpg" alt="Rehabilitación 2" />
+    <img src="terapia4.jpg" alt="Rehabilitación 3" />
   </section>
 
   <section id="testimonios">
     <h2>Testimonios</h2>
-    <div class="testimonial"><strong>María G.:</strong> "Gracias a Terapia Oportuna recuperé mi movilidad en pocas semanas. ¡Recomendado 100%!"</div>
-    <div class="testimonial"><strong>Carlos M.:</strong> "Profesionales y atentos, me ayudaron a superar una lesión complicada."</div>
-    <div class="testimonial"><strong>Lucía R.:</strong> "Las terapias personalizadas hicieron toda la diferencia en mi recuperación."</div>
-    <div class="testimonial"><strong>Juan P.:</strong> "Excelente atención y resultados visibles desde las primeras sesiones."</div>
-    <div class="testimonial"><strong>Ana L.:</strong> "Ambiente cómodo y terapeutas muy capacitados. Muy satisfecha."</div>
+    <div class="testimonio">"Gracias a Terapia Oportuna volví a caminar sin dolor." – Ana M.</div>
+    <div class="testimonio">"El equipo es muy profesional y atento. Muy recomendado." – Jorge L.</div>
+    <div class="testimonio">"Mi hijo ha mejorado mucho gracias a sus terapias." – Lucía R.</div>
+    <div class="testimonio">"Excelente servicio, puntual y eficaz." – Fernando G.</div>
+    <div class="testimonio">"Noté avances en mi recuperación desde la primera semana." – Sonia V.</div>
   </section>
 
   <section id="contacto">
     <h2>Contacto</h2>
-    <form id="contactForm" action="#" method="POST">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required />
-
-      <label for="email">Correo electrónico:</label>
-      <input type="email" id="email" name="email" required />
-
-      <label for="mensaje">Mensaje:</label>
-      <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
-
+    <form action="https://formspree.io/f/mknyqvzr" method="POST">
+      <label>Nombre:</label>
+      <input type="text" name="nombre" required>
+      <label>Correo electrónico:</label>
+      <input type="email" name="email" required>
+      <label>Mensaje:</label>
+      <textarea name="mensaje" rows="5" required></textarea>
       <button type="submit">Enviar</button>
     </form>
+
+    <h3>Ubicación</h3>
+    <p>Los Mochis, Sinaloa, México</p>
+    <iframe src="https://www.google.com/maps?q=los+mochis+sinaloa&output=embed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
+    <h3>Horario de Atención</h3>
+    <p>Lunes a Viernes de 9:00 AM a 5:00 PM</p>
   </section>
-</main>
 
-<footer>
-  &copy; 2025 Terapia Oportuna. Todos los derechos reservados.
-</footer>
+  <footer>
+    <p>&copy; 2025 Terapia Oportuna. Todos los derechos reservados.</p>
+  </footer>
 
-<script>
-  const buttons = document.querySelectorAll('nav button');
-  const sections = document.querySelectorAll('main section');
+  <!-- Botón de WhatsApp -->
+  <div class="whatsapp">
+    <a href="https://wa.me/5216611234567" target="_blank" title="Contáctanos por WhatsApp">
+      <img src="https://cdn-icons-png.flaticon.com/512/124/124034.png" alt="WhatsApp" />
+    </a>
+  </div>
 
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      buttons.forEach(btn => btn.classList.remove('active'));
-      sections.forEach(sec => sec.classList.remove('active'));
-
-      button.classList.add('active');
-      const target = button.getAttribute('data-target');
-      document.getElementById(target).classList.add('active');
-    });
-  });
-
-  // Manejo básico del formulario para que no recargue
-  const form = document.getElementById('contactForm');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    alert('¡Gracias por contactarnos! Pronto responderemos tu mensaje.');
-    form.reset();
-  });
-</script>
-</body>
-</html>
+  <script>
+    function mostrar(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
 
 </body>
 </html>
+
