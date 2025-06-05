@@ -12,13 +12,6 @@
       color: #333;
     }
 
-    header {
-      background-color: #00897b;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-    }
-
     nav {
       background-color: #00695c;
       display: flex;
@@ -121,9 +114,17 @@
 </head>
 <body>
 
-  <header>
-    <h1>Terapia Oportuna</h1>
-    <p>Recupera tu bienestar con atención profesional y humana</p>
+  <header style="
+    background: url('terapia1.jpg') center/cover no-repeat;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+  ">
+    <div style="background: rgba(0,0,0,0.6); padding: 60px 20px; border-radius: 12px; display: inline-block;">
+      <h1 style="font-size: 3em; margin: 0;">Terapia Oportuna</h1>
+      <p style="font-size: 1.2em;">Recupera tu bienestar con atención profesional y humana</p>
+    </div>
   </header>
 
   <nav>
@@ -131,6 +132,7 @@
     <a href="#nosotros">Sobre Nosotros</a>
     <a href="#servicios">Servicios</a>
     <a href="#testimonios">Testimonios</a>
+    <a href="#galeria">Galería</a>
     <a href="#contacto">Contacto</a>
   </nav>
 
@@ -161,6 +163,15 @@
     </div>
     <div class="testimonial">
       <p>“Mis hijos han recibido apoyo escolar personalizado y hemos notado gran avance. ¡Recomendadísimo!”<br><strong>– Jorge P.</strong></p>
+    </div>
+  </section>
+
+  <section id="galeria">
+    <h2>Galería de Nuestro Trabajo</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+      <img src="terapia2.jpg" alt="Terapia 2" style="width: 300px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
+      <img src="terapia3.jpg" alt="Terapia 3" style="width: 300px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
+      <img src="terapia4.jpg" alt="Terapia 4" style="width: 300px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
     </div>
   </section>
 
