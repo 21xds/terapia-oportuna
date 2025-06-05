@@ -229,18 +229,16 @@
 
   buttons.forEach(button => {
     button.addEventListener('click', () => {
-      // Quitar active de todos los botones y secciones
       buttons.forEach(btn => btn.classList.remove('active'));
       sections.forEach(sec => sec.classList.remove('active'));
 
-      // Agregar active al botón clickeado y sección correspondiente
       button.classList.add('active');
       const target = button.getAttribute('data-target');
       document.getElementById(target).classList.add('active');
     });
   });
 
-  // Opcional: manejar el formulario para que no recargue la página y muestre un alert
+  // Manejo básico del formulario para que no recargue
   const form = document.getElementById('contactForm');
   form.addEventListener('submit', e => {
     e.preventDefault();
@@ -248,5 +246,8 @@
     form.reset();
   });
 </script>
+</body>
+</html>
+
 </body>
 </html>
